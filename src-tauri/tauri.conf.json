@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "Tompose",
-    "version": "0.1.0"
+    "version": "0.1.1"
   },
   "tauri": {
     "allowlist": {
@@ -48,9 +48,9 @@
         "wix": {
           "language": "fr-FR"
         },
-	"webviewInstallMode": {
-		"type": "offlineInstaller"
-	}
+        "webviewInstallMode": {
+          "type": "offlineInstaller"
+        }
       }
     },
     "security": {

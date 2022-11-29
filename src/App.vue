@@ -1,12 +1,14 @@
 <script>
 import frise from "./assets/frise.png"
+import fleche from "./assets/fleche.png"
 
 export default {
   name: "App",
   data() {
     return {
       colors: ["blue", "red", "green"],
-      image: frise,
+      frise: frise,
+      fleche: fleche,
       lines: [
         {
           id: 0,
@@ -17,10 +19,15 @@ export default {
       ],
       selNum: null,
       selMul: null,
-      multiplier: null
+      multiplier: null,
+      retenueGauche: []
     }
   },
   methods: {
+    fretenueGauche: function (number) {
+      console.log(number)
+      this.retenueGauche[number] = this.selNum
+    },
     selectN: function (number) {
       this.selNum = number
     },
@@ -75,6 +82,7 @@ export default {
     </div>
   </div>
   <div class="table">
+    <img class="fleche" :src="fleche" height="60" />
     <div class="divider">
       <div class="lines">
         <div class="line" v-for="line in lines" :key="line">
@@ -97,17 +105,18 @@ export default {
           </div>
         </div>
       </div>
-      <div class="operatorPos">
+      <div class="operatorPos" >
+        <div class="retenue" @click="fretenueGauche(0)">{{ retenueGauche[0] }}</div>
         <div @click="mClick" class="case operator">{{
             multiplier
         }}</div>
+        <div class="retenue" style="grid-row: 4" @click="fretenueGauche(1)">{{ retenueGauche[1] }}</div>
       </div>
     </div>
     <div class="dLine"></div>
   </div>
   <div class="compteur"></div>
-
-  <img :src="image" height="240" />
+  <img class="frise" :src="frise" height="240" />
 </template>
 
 <style lang="scss">
@@ -122,7 +131,13 @@ export default {
   user-select: none;
 }
 
-img {
+.fleche {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.frise {
   position: absolute;
   left: 50%;
   bottom: 0px;
